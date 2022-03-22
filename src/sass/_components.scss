@@ -171,9 +171,10 @@
   margin: 5rem auto;
   text-align: center;
 
-  svg {
+  img {
     height: 6rem;
     width: 6rem;
+    object-fit: cover;
     fill: $color-primary;
     animation: rotate 2s infinite linear;
   }

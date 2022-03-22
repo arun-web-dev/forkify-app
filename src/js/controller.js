@@ -1,5 +1,8 @@
 import icons from 'url:../img/icons.svg';
-console.log(icons);
+import spinner from 'url:../img/spinner.png';
+
+import 'core-js/stable';
+import 'regenerator-runtime';
 
 const recipeContainer = document.querySelector('.recipe');
 
@@ -18,9 +21,7 @@ const timeout = function (s) {
 const renderSpinner = function (parentEl) {
   const markup = `
     <div class="spinner">
-        <svg>
-          <use href"=${icons}#icon-loader"></use>
-        </svg>
+        <img src = "${spinner}" alt="spinner-icon">
     </div> `;
   parentEl.innerHTML = '';
   parentEl.insertAdjacentHTML('afterbegin', markup);
@@ -28,6 +29,7 @@ const renderSpinner = function (parentEl) {
 
 const showRecipe = async function () {
   try {
+    renderSpinner(recipeContainer);
     const res = await fetch(
       'https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886'
     );
@@ -149,7 +151,6 @@ const showRecipe = async function () {
           </div>`;
 
     recipeContainer.innerHTML = '';
-
     recipeContainer.insertAdjacentHTML('afterbegin', markup);
   } catch (error) {
     console.error(error);
