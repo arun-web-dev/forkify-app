@@ -8,17 +8,6 @@ const recipeContainer = document.querySelector('.recipe');
 import 'core-js/stable';
 import 'regenerator-runtime';
 
-const timeout = function (s) {
-  return new Promise(function (_, reject) {
-    setTimeout(function () {
-      reject(new Error(`Request took too long! Timeout after ${s} second`));
-    }, s * 1000);
-  });
-};
-
-// https://forkify-api.herokuapp.com/v2
-
-///////////////////////////////////////
 // API key = 0b5c17dc-1a0d-4276-aaee-4e3ca8f6ee89
 
 const controlRecipe = async function () {
@@ -37,6 +26,8 @@ const controlRecipe = async function () {
   }
 };
 
-['hashchange', 'load'].forEach(ev =>
-  window.addEventListener(ev, controlRecipe)
-);
+const init = function () {
+  receipeView.addHandlerRender(controlRecipe);
+};
+
+init();
