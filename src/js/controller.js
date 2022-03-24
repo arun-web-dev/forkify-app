@@ -1,5 +1,5 @@
 //imports model
-import * as model from './model';
+import * as model from './model'; 
 
 //imports Views
 import receipeView from './views/receipeView';
